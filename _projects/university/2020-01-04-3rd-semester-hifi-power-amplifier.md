@@ -16,7 +16,7 @@ We started out by building a preamp. The idea was to have no voltage amplificati
 {% include figure.html path="assets/img/preamp.png" class="img-fluid rounded z-depth-1" zoomable=true %}
 Corner frequencies were designed to be at 1.06 Hz and 17.47 MHz. The circuit has a 2 mA queisant current going through the transistor to keep it open.
 
-{% include figure.html path="assets/img/preamp_img.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+{% include figure.html path="assets/img/preamp_img.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 Next we build a bass and treble adjustment circuit. This meant that the user had tone control of the device and could amplify and reduce the bass and treble frequencies. The design was based on the legendary Baxandall tone control design.
 
 {% include figure.html path="assets/img/tonecontrol.png" class="img-fluid rounded z-depth-1" zoomable=true %}
