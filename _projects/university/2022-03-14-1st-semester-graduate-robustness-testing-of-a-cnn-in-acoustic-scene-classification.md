@@ -2,6 +2,7 @@
 layout: page
 importance: 1
 title: 'Robustness Testing of a CNN in Acoustic Scene Classification'
+img: /assets/img/spectrogram_example.png
 category: university
 ---
 

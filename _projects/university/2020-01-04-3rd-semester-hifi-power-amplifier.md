@@ -2,6 +2,7 @@
 layout: page
 importance: 5
 title: 'HiFi Power Amplifier'
+img: /assets/img/amplifier.png
 category: university
 ---
 

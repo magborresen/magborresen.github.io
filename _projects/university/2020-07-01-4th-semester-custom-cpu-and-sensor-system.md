@@ -2,6 +2,7 @@
 layout: page
 importance: 4
 title: 'Custom CPU and Sensor System'
+img: /assets/img/micro_architecture.jpg
 category: university
 ---
 
