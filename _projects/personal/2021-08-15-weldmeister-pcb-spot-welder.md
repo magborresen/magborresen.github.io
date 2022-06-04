@@ -2,6 +2,7 @@
 layout: page
 importance: 1
 title: 'WeldMeister; PCB Spot Welder'
+img: /assets/img/WeldMeister_top.png
 category: fun
 ---
 

@@ -2,6 +2,7 @@
 layout: page
 importance: 2
 title: 'Real Time Error Detection in 3D Prints'
+img: /assets/img/input_output.png
 category: university
 ---
 

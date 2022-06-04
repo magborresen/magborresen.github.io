@@ -2,6 +2,7 @@
 layout: page
 importance: 6
 title: 'Arduino Plotter (EMC probe holder)'
+img: /assets/img/spider-probe.png
 category: university
 ---
 

@@ -2,6 +2,7 @@
 layout: page
 importance: 3
 title: 'Avalanche Rescue Drone'
+img: /assets/img/drone.png
 category: university
 ---
 
