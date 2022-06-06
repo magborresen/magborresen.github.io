@@ -33,10 +33,10 @@ Now I am at university writing my bachelor’s degree in Informatic System. Howe
 
 In late 2020 I was diagnosed with Optic Neuritis which still impairs my vision. I probably only have 80-90% vision on my left eye on good days. I started doing the Wim Hof method which has actually helped quite a lot.
 
-Most of my time is currently spent pursuing my masters degree in Signal Processing at Aalborg University. I started my masters studies in 2021 and I expect to have my diploma in 2023. At Aalborg we do problem based learning, meaning half our time during a semester is spent on a semester project. Which also means half of our ECTS for the semester comes from these projects. My group and I are currently working on accoustic scene classification using a Deep Neural Network and Stochastic Models.
+Most of my time is currently spent pursuing my masters degree in Signal Processing at Aalborg University. I started my masters studies in 2021 and I expect to have my diploma in 2023. At Aalborg we do problem based learning, meaning half our time during a semester is spent on a semester project. Which also means half of our ECTS for the semester comes from these projects. My group and I are currently working on simulating a MIMO Radar System used for Track-Before-Detect algorithms. The simulation model will be used to run a TBD algorithm called a Particle Filter and the computational complexity of such a filter in a MIMO setup is investigated.
 
 When not studying I enjoy spending time at my place of work, which is GomSpace in Aalborg as well. Here I have a student worker position which mixes between sales and electronics R&amp;D. I have held this position since 2018.
 
-However I am most happy when I am able to work on my own projects, which you are also able to follow on this website. This is everything from a DIY E-bike to a bird calling smart box to attract the soon to be endangered Apus Apus. The latter being a project that my father turned me on to.
+However I am most happy when I am able to work on my own projects, which you are also able to follow on this website. This is everything from a DIY E-bike to a strain gauge PCB. The latter being a project that my father turned me on to.
 
 Last but not least, I enjoy going on motorcycle rides and tours. I currently own a 2010 (2007 model) Kawasaki ER6-F (ninja 650 in the US).
