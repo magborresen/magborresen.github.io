@@ -2,7 +2,7 @@
 layout: page
 importance: 1
 title: 'WeldMeister; PCB Spot Welder'
-img: /assets/img/WeldMeister_top.png
+img: /assets/img/projects/WeldMeister_top.png
 category: fun
 ---
 
@@ -14,8 +14,8 @@ The idea for WeldMeister came when I saw the KWeld spotwelder. This was a PCB sp
 
 The first prototype in a 3D model is shown below.
 
-{% include figure.html path="assets/img/WeldMeister_bottom.png" class="img-fluid rounded z-depth-1" zoomable=true %}
-{% include figure.html path="assets/img/WeldMeister_top.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+{% include figure.html path="assets/img/projects/WeldMeister_bottom.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+{% include figure.html path="assets/img/projects/WeldMeister_top.png" class="img-fluid rounded z-depth-1" zoomable=true %}
 The big empty footprint on the top side is supposed to show a rotary encoder, but I lost the 3D model for it before making this post.
 
 Progress is currently that I have the bare boards at hand, but the global chip pandemic has made my high power transistors become a scarcity. So either I have to redesign the boards with new transistors or wait until they are back in stock. Which, by the looks of it, is late 2022.

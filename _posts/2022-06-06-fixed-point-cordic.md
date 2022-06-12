@@ -20,24 +20,7 @@ Where we set $$x_0 = 1$$, $$y_0 = 0$$ and $$z_0 = \theta$$. Then $$\sigma_i$$ be
 
 The pseudo code for the algorithm is listed below.
 
-{% pseudocode %}
-Function swap(old, new)
-  remaining <- quorumSize
-  success <- False
-  For Each host
-    result[host] <- send(host, propose(old, new))
-    If result[host] = "ok"
-      remaining--
-
-  If remaining > 1+quorumSize/2
-    success <- True
-
-  For Each result
-    If success
-      send(host, confirm(old, new))
-    Else
-      send(host, cancel(old, new))
-{% endpseudocode %}
+{% include figure.html path="assets/img/posts/cordic-pseudo.png" class="img-fluid rounded z-depth-1" %}
 
 The constant $$k$$ is calculated as $$\prod_{i} k_i = \prod_{i} \frac{1}{\sqrt{1+2^{-2i}}}$$. Which means this constant can also be calculated beforehand.
 
@@ -82,7 +65,79 @@ In order to optimize the architecture and taking advantage of the some paralleli
 
 {% include figure.html path="assets/img/posts/ce_chain_delayed-1.png" class="img-fluid rounded z-depth-1"%}
 
-We've also put a limit on the amount of function units that are available for multipleication and addition in each of the $$CE$$'s. Every $$CE$$ will have one shifter (for multiplication) and one adder available. Meaning we end up with 11 shifters, 11 adders, and two multipliers for the 11 iteration CORDIC algorithm. The following scheduling section will show how this is possible.
+We've also put a limit on the amount of function units that are available for multipleication and addition in each of the $$CE$$'s. Every $$CE$$ will have one shifter (for multiplication) and one adder available. We can use shifters for most of the multiplications since many of them are something multiplied with $$2^{-i}$$, which can be done by right shifting $$i$$-times. Meaning we end up with 11 shifters, 11 adders, and two multipliers for the 11 iteration CORDIC algorithm. The following scheduling section will show how this is possible.
 
 ## Scheduling
 
+We can use the previously created DFG and PG in order to create a schedule for the algorithm. For this we will use the __ASAP__ & __ALAP__ methology, which is where we first schedule operations as soon as possible and afterwards they are scheduled as late as possible. The methology makes it possible to calculate the mobility and urgency for each operation, which in turn, we can use to create a __prioritized ready list__. ASAP and ALAP schedules can be seen in the figures below.
+
+{% include figure.html path="assets/img/posts/asap-1.png" class="img-fluid rounded z-depth-1"%}
+
+{% include figure.html path="assets/img/posts/alap-1.png" class="img-fluid rounded z-depth-1"%}
+
+The $$C_i$$'s on the left side of each plot corresponds to a C-step.
+
+Mobilities can then be calculated using the following expression
+
+$$M(op) = ALAP(op) - ASAP(op)$$
+
+Where $$M(op)$$ is the mobility of the operation $$op$$. Then $$ALAP(op)$$ is the C-step where $$op$$ is scheduled in ALAP, and the same thing goes for ASAP. Below an example is shown for calculating $$M(x_4)$$.
+
+$$M(x_4) = ALAP(x_4) - ASAP(x_4) = 2 - 1 = 1$$
+
+So for $$CE_10$$ the mobility for all operations is zero since they are all scheduled at the same time in both schemes.
+
+Having calculated the mobilities for all the operations, we can go on to calculate the urgencies. Which we can calculate using the following expression
+
+$$U(op) = \frac{w}{\#CS}$$
+
+Where $$w$$ is a weight associated with each operation that can be defined in different ways. $$\#CS$$ is the number of control steps we go through until we hit the c-step where the operation is scheduled in ALAP. For this implementation we will set the weights equal to the computation times of the operations. But since we have assumed that all operations takes the same amount of time to complete, we will set all the weights to $$1$$.
+
+### Operation Schedule
+As we have prevously already stated the allocation of our ressources (i.e. one adder and one shifter per $$CE$$), we can now schedule from the results above. Thus for every C-step we can only do one shift operation and one addition in each $$CE$$. So for $$CE_0$$, the shifting operations $$x_4$$ and $$x_6$$ have the lowest mobility and the highest urgency and thus should be scheduled first. Because of only having one bit-shifter, we have to schedule them in two C-steps. As they also have the same mobility, we can schedule them randomly. So we will schedule $$x_4$$ in the first C-step and $$x_6$$ in the second C-step. Now, our ressource allocation also permits us to schedule an addition/subtraction in the first C-step, however since both $$+_2$$ and $$+_7$$ are dependent on $$x_4$$ and $$x_6$$ respectively, we cannot schedule those in C-step 1. The only operation left for scheduling then in $$-_{10}$$. For C-step 2, the only addition that is available to perform is $$+_2$$ as $$x_6$$ is also scheduled for this C-step. We'll end up scheduling $$+_7$$ in C-step 3. This scheduling scheme is used for $$CE_0$$ to $$CE_9$$. For $$CE_{10}$$ we can see from the ASAP and ALAP schedules that the operations have no mobility, so we have to schedule them as is. Meaning we'll end up with the following schedule.
+
+{% include figure.html path="assets/img/posts/PG_area-1.png" class="img-fluid rounded z-depth-1"%}
+
+The scheduling scheme now permits us to illustrate the system as a Finite State Machine (FSM). More specifically, we will illustrate the system as an Algorithmic State Machine (ASM) that has 3 states. Each state is defined as one of the C-steps in the schedule shown above. The ASM can be seen below.
+
+{% include figure.html path="assets/img/posts/ASM_CE2-1.png" class="img-fluid rounded z-depth-1"%}
+
+From the ASM we can see that the output logic is dependent on $$sign(z_i)$$, which in our case is an input to each of the $$CE$$'s. Hence we can define the FSM as a Mealy Machine.
+
+### Datapath
+
+The datapath of a system is a collection of the operations, registers and the connections between them. Since the system we are designing both have time-constrain considerations as well as area constraints, each of the $$CE$$'s will have dedictated hardware such that inputs and outputs can be run "continously". From the schedule we can see that the datapath for $$CE_0$$ to $$CE_9$$ is identical. However our $$CE_{10}$$ does not share the same schedule and must therefore have a different datapath as there are more operations to consider. By using the schedule shown just before, we can implement the SDFG that we previously illustrated. The results is the datapath below.
+
+{% include figure.html path="assets/img/posts/datapath-1.png" class="img-fluid rounded z-depth-1"%}
+
+State input/outputs are switched using multiplexers shown with bit sequence control inputs on each line. Registers are depicted by boxes. The bit-shifting operation denoted by the square box with the operation $$>>(i)$$, which as mentioned equivalent to shifting $$i$$-times to the right. Internal registers are denoted by $$r_1$$ and $$r_2$$, while registers on in/output are denoted by the respective variable names and $$CE$ element count. We will write to an output register at each state, so a control signal to each of the registers is needed. Since $$CE_{10} is different from the rest of the elements, we create a unique datapath for it, which is shown below.
+
+{% include figure.html path="assets/img/posts/datapath-1.png" class="img-fluid rounded z-depth-1"%}
+
+The datapath shows that $$CE_{10}$$ is used as the output element and the cosine and sine to the input angle $$\theta$$ is output. We also see the two actual multipliers in the system (not the shifters as in the other elements). We also require two ALU's for this element in order to process both outputs in parallel.
+
+## Control Signals
+
+We cannot rely solely on the data path. Thus, as previously shown in the CDFG, we also need a control path. Signals from the control path is connected through to the datapath such that operations can be timed to the correct state. All generated control signals is shown in the table below.
+
+{% include figure.html path="assets/img/posts/control-signals.png" class="img-fluid rounded z-depth-1"%}
+
+Multiplexers that can control more than one input will be controlled by two-bit signals whereas we can control two-input multiplexers with only a one bit signal. Each register will have a control signal such that it can be read from or written to. Further, ALU's will have a control signal such that we can switch between addition and subtraction, based on $$sign(z)$$.
+
+## RTL Design
+
+Having defined a datapath, ASM and a schedule, we can start thinking about implementing the algorithm in Register Transfer Level (RTL). We have chosen not to explore the actual implementations of adders and multipliers, which means we only use IP-blocks from the Quartus library. Multiplexers have been implemented as two different functional units with a different amount of input and control signal input size. The RTL diagram can be seen in the figure below.
+
+{% include figure.html path="assets/img/posts/RTL_Inside_CE.png" class="img-fluid rounded z-depth-1"%}
+
+The RTL follows the datapath closely and the only difference in the two diagrams is that control signals are also shown in the former. The bitshifter in each of the $$CE$$ elements need to know how many times to shift. Therefore a constant has been defined for each of the $$CE$$'s. This constant is hardcoded and is therefore not part of the control-flow. Now we need to put multiple $$CE$$'s together which can be seen in the RTL diagram below.
+
+{% include figure.html path="assets/img/posts/RTL_two_CE.png" class="img-fluid rounded z-depth-1"%}
+
+### Control Unit
+
+Control signals are implemented in a seperate block and can be seen in the figure below.
+
+{% include figure.html path="assets/img/posts/RTL_control.png" class="img-fluid rounded z-depth-1"%}
+
+The FSM is implemented as the yellow box in the diagram and contain state information about the current and next state. The output of the FSM is connected to a bus that also connects to a bunch of multiplexers. In this way, the control signals can be switched to match the current state operations. There are still some bugs in the implementation which we have not been able to fix yet.
