@@ -2,7 +2,7 @@
 layout: page
 importance: 3
 title: 'Avalanche Rescue Drone'
-img: /assets/img/drone.png
+img: /assets/img/projects/drone.png
 category: university
 ---
 
@@ -18,18 +18,18 @@ We chose to use a rather large signal chain. So from the coils, the signal was r
 
 To design the coils, we used the equivalent circuit shown below.
 
-{% include figure.html path="assets/img/seriel_resonans.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+{% include figure.html path="assets/img/projects/seriel_resonans.png" class="img-fluid rounded z-depth-1" zoomable=true %}
 The coils were made by wrapping some coated wire around a ferromagnetic rod which increased the inductance of the coil. We could the tune it to the resonance frequency we wanted by varying the capacitor connected across the coil terminals. Unfortunately, the pictures I had of the coils were lost. We ended up with a Q value of the coil of 45 and we were able to tune the antenna to the required frequency.
 
 From theory of how strong the field emitted by Avalanche transceiver should be, we could calculate a signal strength over distance and plot it. We could then measure the signal strength of our designed antenna and see if they matched up. The result can be seen in the figure below.
 
-{% include figure.html path="assets/img/Afstandsplot.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+{% include figure.html path="assets/img/projects/Afstandsplot.png" class="img-fluid rounded z-depth-1" zoomable=true %}
 x-axis shows the distance between the transmitter and receiver and the y-axis shows the expected voltage across the coil.
 The blue solid line shows the signal strength to distance with the lowest allowed signal strength of the transmitter. The red solid line shows the highest allowed signal strength. The dots are our measurements. The reason for the difference in colors for our measurements is because we had to use amplification after 3-4 meters. Otherwise the signal would be too weak to visually identify on an oscilloscope.
 
 The LNA that followed the coils were designed with a differential amplifier BJT circuit, biased by a Wilson Current Mirror. Further voltage amplification was achieved with an output compound coupling. Circuit is shown below.
 
-{% include figure.html path="assets/img/LNA_design_oversigt.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+{% include figure.html path="assets/img/projects/LNA_design_oversigt.png" class="img-fluid rounded z-depth-1" zoomable=true %}
 It gave a descent frequency response. But I am not sure that we actually made it that low noise… We should probably have been using MOSFETS instead, but hey… We had fun and learned.
 
 The bandpass filter was implemented as a Sallen-Key topology, which implements an active second order filter. Calculations and implementation was made according to the very nice [handb](<https://www.analog.com/media/en/training-seminars/design-handbooks/Basic-Linear-Design/Chapter8.pdf? fbclid=IwAR0Dex1RccXly5lKh_jKvWUySV0ouwJgtTJv3xNLcxjBjuMLkIUCUeHTny4>)[ook from Analog Devices](<https://www.analog.com/media/en/training-seminars/design-handbooks/Basic-Linear-Design/Chapter8.pdf? fbclid=IwAR0Dex1RccXly5lKh_jKvWUySV0ouwJgtTJv3xNLcxjBjuMLkIUCUeHTny4>).
@@ -42,12 +42,12 @@ So at this point we pretty much just had to do some math work on the sampled sig
 
 To do a control system for the drone, we tried measuring the drone’s step response. This we thought would be a good idea since we might need the drone to turn fast when searching. So we went out in a low wind day with a preprogrammed Rasperry Pi. The Pi was to change the yaw of the drone 5 degrees as fast as possible. Then we could record the yaw angle during the procedure. Using that data, we were able to make a 2nd order approximation of the system. We tried using the MATLAB System Identifier tool to confirm the approximation, but the tool showed that a fifth order system was needed to most accurately model the response. The measured response and approximations is shown below.
 
-{% include figure.html path="assets/img/step_plot_med_5_orden.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+{% include figure.html path="assets/img/projects/step_plot_med_5_orden.png" class="img-fluid rounded z-depth-1" zoomable=true %}
 Measured step response, 2nd order approximation and 5th order approximation. However we decided to work with the 2nd order approximation since the MSE was still quite low. Though we actually ended up scrapping it, since our conclusion with multiple simulations, was that DJI has (surprise surprise) made a pretty good control system, and our system did not gain anything from us messing with it. A flow diagram of the entire system can be seen below.
 
-{% include figure.html path="assets/img/drone_flow.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+{% include figure.html path="assets/img/projects/drone_flow.png" class="img-fluid rounded z-depth-1" zoomable=true %}
 So search areas were split into rough search and fine search. Rough search is where the drone is actually helpful. The idea is that the drone will find the signal from 50-100 m away and then land within 1-3 meters of the buried person.
 
 Simulations showed that the algorithm and system on the Pi would work. However we never got to test it out in the world. Below is a plot of the simulation results. The drone starts at position \[0,0\] and the transmitter is located at \[40,40\]. Various amounts of noise was introduced to the system and signal to stress test.
 
-{% include figure.html path="assets/img/Simulation_noise_plot.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+{% include figure.html path="assets/img/projects/Simulation_noise_plot.png" class="img-fluid rounded z-depth-1" zoomable=true %}
