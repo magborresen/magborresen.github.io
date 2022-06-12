@@ -74,7 +74,7 @@ stackoverflow_id: #your stackoverflow id
 contact_note: >
   Like to talk? Just send me an email!
 
-google_analytics:  # your google-analytics ID (format: UA-XXXXXXXXX)
+google_analytics: G-QG1FB01NT0 # your google-analytics ID (format: UA-XXXXXXXXX)
 google_site_verification:  # your google-site-verification ID (Google Search Console)
 bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
 panelbear_analytics:  # panelbear analytics site ID (format: XXXXXXXXX)
