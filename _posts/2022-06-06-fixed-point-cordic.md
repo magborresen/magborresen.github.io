@@ -3,7 +3,7 @@ layout: post
 title: Fixed Point CORDIC
 date: 2022-06-06 22:47:00-0400
 description: Architectural design of a fixed point CORDIC algorithm
-tags: math dsp
+tags: math dsp cordic fpga
 categories: dsp
 ---
 
