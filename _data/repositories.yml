@@ -1,12 +1,7 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - magborresen
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - magborresen/spc8
+  - magborresen/spa7-asc
+  - magborresen/uLevel
