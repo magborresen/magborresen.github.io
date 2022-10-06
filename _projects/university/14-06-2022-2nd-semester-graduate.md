@@ -54,8 +54,6 @@ So in order to actually use the theories we just discussed in relation to the ra
 
 An FMCW radar will over a period of a pulse, linearly change the frequency of the signal from $$f_{min}$$ to $$f_{max}$$. When receiving the signal after it having bounced of the target, we will use a mixer in order to mix the original signal with the time delayed received signal. This is shown in the image below.
 
-
-
 The FMCW Radar uses a Fourier Transform on the received signal in order to determine 
 
 Using FMCW Radar, we only need a single transciever in order to determine the range of our target, provided the target being in range. If however, we want to get some velocity and angle information about our target, this is also possible using FMCW. The idea of the pulse train come in when we start looking at the velocity of the target. Because a moving target will cause a very small change in doppler frequency when the wave is returned. This change is not enough for us to distinguish between velocities. However the phase will have a quite significant change associated with it. Therefore, we can exploit the change in phase between pulses and thus estimate the velocity with pretty good accuracy.
