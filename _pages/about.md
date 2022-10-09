@@ -9,8 +9,8 @@ profile:
   image: prof_pic.png
   image_cicular: false # crops the image to make it circular
   address: >
-    <p>+45 25 33 55 55</p>
-    <p>Aalborg, Denmark</p>
+    <p>+49 176 73562752</p>
+    <p>Munich, Germanz</p>
 
 news: true  # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
@@ -33,10 +33,12 @@ Now I am at university writing my bachelor’s degree in Informatic System. Howe
 
 In late 2020 I was diagnosed with Optic Neuritis which still impairs my vision. I probably only have 80-90% vision on my left eye on good days. I started doing the Wim Hof method which has actually helped quite a lot.
 
-Most of my time is currently spent pursuing my masters degree in Signal Processing at Aalborg University. I started my masters studies in 2021 and I expect to have my diploma in 2023. At Aalborg we do problem based learning, meaning half our time during a semester is spent on a semester project. Which also means half of our ECTS for the semester comes from these projects. My group and I are currently working on simulating a MIMO Radar System used for Track-Before-Detect algorithms. The simulation model will be used to run a TBD algorithm called a Particle Filter and the computational complexity of such a filter in a MIMO setup is investigated.
+Most of my time is currently spent pursuing my masters degree in Signal Processing at Aalborg University. I started my masters studies in 2021 and I expect to have my diploma in 2023. At Aalborg we do problem based learning, meaning half our time during a semester is spent on a semester project. Which also means half of our ECTS for the semester comes from these projects
+
+In August 2022 I moved to Munich to do my 9th semester as an internship with Infineon Technologies, who is headquartered here. My plan is to spend the spring semester here as well writing my master thesis. After that, we'll see what comes.
 
 When not studying I enjoy spending time at my place of work, which is GomSpace in Aalborg as well. Here I have a student worker position which mixes between sales and electronics R&amp;D. I have held this position since 2018.
 
 However I am most happy when I am able to work on my own projects, which you are also able to follow on this website. This is everything from a DIY E-bike to a strain gauge PCB. The latter being a project that my father turned me on to.
 
-Last but not least, I enjoy going on motorcycle rides and tours. I currently own a 2010 (2007 model) Kawasaki ER6-F (ninja 650 in the US).
+Last but not least, I enjoy going on motorcycle rides and tours. I'm currently looking to get into the enduro/adventure riding. So looking for a new motorcycle here in Munich that fits the bill.
