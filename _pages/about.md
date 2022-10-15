@@ -9,7 +9,7 @@ profile:
   image: prof_pic.png
   address: >
     <p>+49 176 73562752</p>
-    <p>Munich, Germanz</p>
+    <p>Munich, Germany</p>
 
 news: true  # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
