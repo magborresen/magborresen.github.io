@@ -33,11 +33,9 @@ Now I am at university writing my bachelor’s degree in Informatic System. Howe
 
 In late 2020 I was diagnosed with Optic Neuritis which still impairs my vision. I probably only have 80-90% vision on my left eye on good days. I started doing the Wim Hof method which has actually helped quite a lot.
 
-Most of my time is currently spent pursuing my masters degree in Signal Processing at Aalborg University. I started my masters studies in 2021 and I expect to have my diploma in 2023. At Aalborg we do problem based learning, meaning half our time during a semester is spent on a semester project. Which also means half of our ECTS for the semester comes from these projects
+Most of my time is currently spent pursuing my masters degree in Signal Processing at Aalborg University. I started my masters studies in 2021 and I expect to have my diploma in 2023. At Aalborg we do problem based learning, meaning half our time during a semester is spent on a semester project. Which also means half of our ECTS for the semester comes from these projects. During my time in Aalborg I also worked for almost four years for a nanosatellite company called GomSpace. 
 
 In August 2022 I moved to Munich to do my 9th semester as an internship with Infineon Technologies, who is headquartered here. My plan is to spend the spring semester here as well writing my master thesis. After that, we'll see what comes.
-
-When not studying I enjoy spending time at my place of work, which is GomSpace in Aalborg as well. Here I have a student worker position which mixes between sales and electronics R&amp;D. I have held this position since 2018.
 
 However I am most happy when I am able to work on my own projects, which you are also able to follow on this website. This is everything from a DIY E-bike to a strain gauge PCB. The latter being a project that my father turned me on to.
 

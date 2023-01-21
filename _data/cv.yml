@@ -19,6 +19,7 @@
         - Convex Optimization.
         - Reconfigurable and Low Energy Systems.
         - Radar Signal Processing.
+        - System state estimation.
         - DNN Techniques in Sensor Signal Processing.
         - FPGA Based systems design, development and verification.
 
@@ -46,9 +47,17 @@
 - title: Experience
   type: time_table
   contents:
+    - title: Master Thesis Student
+      institution: Infineon Technologies AG
+      year: 2023 - NOW
+      description:
+        - BLDC motor anomaly detection.
+        - Working on Autoencoders neural network architectures including variational and stacked AEs.
+        - Python Tensorflow development.
+        - Hardware considerations for implementation in TVM framework.
     - title: Intern
       institution: Infineon Technologies AG
-      year: 2022 - NOW
+      year: 2022 - 2023
       description:
         - SystemVerilog Based FPGA development of new post silicon verification control cicuit.
         - Formal Verification strategies such as Bounded Model Checking but also more recent developments within Machine Learning techniques in verification.
@@ -75,13 +84,13 @@
   contents:
     - title: <a href="https://github.com/magborresen/uLevel">µLevel</a>
       year: 2021 - NOW
-      description: Strain Gauge implemented using the wires of a PCB. The intention was to use it as a bed levelling sensor in 3D printers.
+      description: Strain Gauge implemented using the wires of a PCB. The intention was to use it as a bed levelling sensor in 3D printers. All the demo boards I had laying around was aquired by a professor at OHSU.
     - title: <a href="https://github.com/magborresen/uSpot">µSpot</a>
       year: 2020 - NOW
       description: Battery Spot welder with power estimation using internal RDS on of the driver mosfets. I never got to test it because of the component shortage. 
     - title: <a href="https://github.com/magborresen/3d_power_meter">3D Power Meter</a>
       year: 2022 - NOW
-      description: Power Meter developed for use in 3D printers. Communicates with a Raspberry Pi over SPI from the ADC. The Pi can then show the calculate and show power values based on the current received from the board. Uses a Hall-effect sensor for current measurement.
+      description: Power Meter developed for use in 3D printers. ADC Data can be read using a Raspberry Pi on the 3D printer using an SPI protocol. The Pi can then show the calculate and show power values based on the current received from the board. Uses a Hall-effect sensor for current measurement.
 
 - title: Other Interests
   type: list
